@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  {% load static %}
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="{% static 'css/style.css '%}">
+    <title>Weather App</title>
+  </head>
+  <nav class="nav-bar">
+    <div class="nav-bar-side-1">
+      <h2>Weather App</h2>
+      <span>Using Django Framework</span>
+    </div>
+    <ul class="nav-bar-side-2">
+      <li><a href="">Open Weather</a></li>
+      <li><a href=""> Open Api</a></li>
+      </ul>
+  </nav>
+
+  <body>
+    <div class="header-container">
+        <h1 class="header--h1">Weather DeskTop App</h1>
+        <p class="header--p">Using Python Language and Django Framework</p>
+        <img src="{% static 'images/pngegg.png'%}" alt="weather-logo" class="image">
+    </div>
+    <form method="post">
+         {% csrf_token %}
+        <input type="text" name="city" placeholder="Choose Your City ...">
+        <button type="submit">Search</button>
+    </form>
+    <div class="row">
+        {% if country_code and temp and pressure and humidity  %}
+        <div class="container">
+            <div class="card-body">
+            <h4><span>Country Code :</span> {{country_code}}</h4>
+            <h4><span>Temperature In Celsuis :</span> {{temp}}</h4>
+            <h4><span>Pressure :</span> {{pressure}}</h4>
+            <h4><span>Humidity :</span> {{humidity}}</h4>
+            <h4><span>Forcast :</span> {{main}} <img src="https://api.openweathermap.org/img/w/{{icon}}.png" alt="" srcset=""></h4>
+            <h4><span>Description :</span> {{description}}</h4>
+            
+            
+        </div>
+
+        </div>
+         
+
+        {% endif %}
+    </div>
+  </body>
+</html>
